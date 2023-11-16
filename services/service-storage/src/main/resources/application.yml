@@ -1,16 +1,12 @@
-# spring configuration
 spring:
    application:
-      name: service-emaillist
+      name: service-storage
    profiles:
       active: development
 
-            
+
 ---
 # configuration: common
-mybatis:
-   config-location: classpath:mybatis/configuration.xml
-
 server:
    port: 0
    servlet:
@@ -18,51 +14,56 @@ server:
       encoding:
          charset: UTF-8
          enabled: true
-
+         
 ---
-# configuration: development
+# confioguration: development
 spring:
    config:
       activate:
          on-profile: development
-
+   servlet:
+      multipart:
+         enabled: true
+         max-file-size: 20MB
+         max-request-size: 100MB
    devtools:
       livereload:
          enabled: true
-                     
-   datasource:
-      driver-class-name: org.mariadb.jdbc.Driver
-      url: jdbc:mariadb://192.168.0.33:3307/webdb?charset=utf8
-      username: webdb
-      password: webdb
-      hikari:
-         minimum-idle: 10
-         maximum-pool-size: 20
 
 logging:
    pattern:
       console: "%d{HH:mm:ss.SSS} [%thread] %-5level %logger{5} - %msg%n"
    level:
-      root: INFO
+      root: INFO  
+               
+eureka:
+   instance:
+      preferIpAddress: true
+   client:
+      fetchRegistry: true
+      registerWithEureka: true
+      serviceUrl:
+         defaultZone: http://localhost:8761/eureka
 
-           
-                            
+storage:
+   location: /Users/kdj/service-storage/assets
+   httpd:
+      host: localhost
+      port: 9999
+
+
 ---
 # configuration: production
 spring:
    config:
       activate:
          on-profile: production
-
-   datasource:
-      driver-class-name: org.mariadb.jdbc.Driver
-      url: jdbc:mariadb://192.168.0.33:3307/webdb?charset=utf8
-      username: webdb
-      password: webdb
-      hikari:
-         minimum-idle: 10
-         maximum-pool-size: 20
-
+   servlet:
+      multipart:
+         enabled: true
+         max-file-size: 20MB
+         max-request-size: 100MB
+         
 logging:
    pattern:
       file: "%d{HH:mm:ss.SSS} [%thread] %-5level %logger{5} - %msg%n"
@@ -75,13 +76,13 @@ logging:
       name: logs/${spring.application.name}.log
    level:
       root: WARN
-      com:
-         poscodx:
+      me:
+         kickscar:
             msa:
                service:
-                  emaillist:
-                     exception: ERROR
-                               
+                  storage:
+                     exception: ERROR         
+
 eureka:
    instance:
       preferIpAddress: true
@@ -90,4 +91,9 @@ eureka:
       registerWithEureka: true
       serviceUrl:
          defaultZone: http://192.168.0.33:8761/eureka
-                              
+
+storage:
+   location: /usr/service-storage/assets
+   httpd:
+      host: 192.168.0.33
+      port: 9999
