@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "NODE_ENV=production npm install && npx webpack --config config/webpack.config.js --progress --mode production",
-    "dev": "NODE_ENV=development npx webpack serve --config config/webpack.config.js --progress --mode development"
+    "build": "cross-env NODE_ENV=production npm install && npx webpack --config config/webpack.config.js --progress --mode production",
+    "dev": "cross-env NODE_ENV=development npx webpack serve --config config/webpack.config.js --progress --mode development"
   },
   "keywords": [],
   "author": "",
