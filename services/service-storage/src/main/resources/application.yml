@@ -90,10 +90,10 @@ eureka:
       fetchRegistry: true
       registerWithEureka: true
       serviceUrl:
-         defaultZone: http://192.168.0.33:8761/eureka
+         defaultZone: http://192.168.0.172:8761/eureka
 
 storage:
    location: /usr/service-storage/assets
    httpd:
-      host: 192.168.0.33
+      host: 192.168.0.172
       port: 9999
