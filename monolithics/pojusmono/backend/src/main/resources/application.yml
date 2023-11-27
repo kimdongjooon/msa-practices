@@ -2,7 +2,7 @@
 spring:
    application:
       name: emaillist
-   profile:
+   profiles:
       active: development
 
       
@@ -53,7 +53,7 @@ spring:
    # datasource
    datasource:
       driver-class-name: org.mariadb.jdbc.Driver
-      url: jdbc:mariadb://192.168.0.92:3307/webdb?charset=utf8
+      url: jdbc:mariadb://192.168.0.33:3307/webdb?charset=utf8
       username: webdb
       password: webdb
       hikari:
