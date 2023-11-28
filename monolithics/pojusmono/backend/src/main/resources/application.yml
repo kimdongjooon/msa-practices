@@ -49,13 +49,13 @@ spring:
    devtools:
       livereload:
          enabled: true
-   
+
    # datasource
    datasource:
       driver-class-name: org.mariadb.jdbc.Driver
-      url: jdbc:mariadb://192.168.0.33:3307/webdb?charset=utf8
-      username: webdb
-      password: webdb
+      url: jdbc:mariadb://192.168.0.33:3307/pojusdb?charset=utf8
+      username: pojusdb
+      password: pojusdb
       hikari:
          minimum-idle: 10
          maximum-pool-size: 20

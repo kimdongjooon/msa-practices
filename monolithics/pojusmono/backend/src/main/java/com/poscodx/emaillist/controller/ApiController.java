@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.poscodx.emaillist.dto.JsonResult;
-import com.poscodx.emaillist.repository.EmaillistRepository;
-import com.poscodx.emaillist.vo.EmaillistVo;
+import com.poscodx.emaillist.repository.DirectionRepository;
+
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -19,24 +19,25 @@ import lombok.extern.slf4j.Slf4j;
 @RestController
 public class ApiController {
 	
+	
 	@Autowired
-	private EmaillistRepository emaillistRepository;
+	private DirectionRepository directionRepository;
 	
 	@GetMapping("/api")
 	public ResponseEntity<JsonResult> read(
-			@RequestParam(value="kw", required=true, defaultValue="") String keyword) {
-		log.info("Request [GET /api]: "+keyword);
+			@RequestParam(value="coil_no", required=true, defaultValue="") String coil_no) {
+		log.info("Request [GET /api]: "+coil_no);
 		return ResponseEntity
 					.status(HttpStatus.OK)
-					.body(JsonResult.success(emaillistRepository.findAll(keyword)));
+					.body(JsonResult.success(directionRepository.findAll(coil_no)));
 	}
 	
-	@PostMapping("/api")
-	public ResponseEntity<JsonResult> create(@RequestBody EmaillistVo email) {
-		log.info("Request [POST /api]: "+ email); 
-		return ResponseEntity
-				.status(HttpStatus.OK)
-				.body(JsonResult.success(emaillistRepository.insert(email)));
-	}
+//	@PostMapping("/api")
+//	public ResponseEntity<JsonResult> create(@RequestBody EmaillistVo email) {
+//		log.info("Request [POST /api]: "+ email); 
+//		return ResponseEntity
+//				.status(HttpStatus.OK)
+//				.body(JsonResult.success(emaillistRepository.insert(email)));
+//	}
 
 }

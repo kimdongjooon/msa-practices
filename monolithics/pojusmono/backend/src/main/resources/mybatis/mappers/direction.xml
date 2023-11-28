@@ -1,25 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="emaillist">
+<mapper namespace="direction">
 	
-	<select id="findAll" resultType="emaillistvo" parameterType="String">
+	<select id="findAll" resultType="directionvo" parameterType="String">
 		<choose>
-			<when test="keyword == null or keyword ==''">
+			<when test="coil_no == null or coil_no ==''">
 				<![CDATA[
-			  	select no, first_name, last_name, email 
-			    from emaillist 
-	        	order by no desc
+			  	select * 
+			    from direction 
 	        	]]>
 			</when>
 			<otherwise>
 				<![CDATA[
-			  	select no, first_name, last_name, email 
-			    from emaillist 
-			    where first_name like '%${keyword}%'
-			    or last_name like '%${keyword}%'
-			    or email like '%${keyword}%'
-	        	order by no desc
+			  	select * 
+			    from direction 
+			    where coil_no like '%${coil_no}%'
 	        	]]>
 			</otherwise>
 			
@@ -28,6 +24,7 @@
 		
 	</select>
 	
+	<!-- 
 	<select id="latestEmail" resultType="emaillistvo">
 		<![CDATA[
 		  select no, first_name, last_name, email 
@@ -49,4 +46,5 @@
 			]]>
 		</selectKey>
 	</insert>
+	-->
 </mapper>

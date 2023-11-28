@@ -5,11 +5,11 @@
 		<setting name="mapUnderscoreToCamelCase" value="true"/>
 	</settings>
 	<typeAliases>
-		<typeAlias type="com.poscodx.emaillist.vo.EmaillistVo" alias="emaillistvo" />
+		<typeAlias type="com.poscodx.emaillist.vo.DirectionVo" alias="directionvo" />
     </typeAliases>	
 	
 	<mappers>
-		<mapper resource="mybatis/mappers/emaillist.xml" />
+		<mapper resource="mybatis/mappers/direction.xml" />
 
 	</mappers>
 </configuration>
